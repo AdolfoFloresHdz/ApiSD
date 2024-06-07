@@ -4,7 +4,7 @@ const routerApi = require ('./routes');
 const { logErrors, errorHandler, boomErrorHandler } = require('./middlewares/error.hander')
 
 const app = express()
-const port = 3000;
+const port = process.env.PORT || 3000
 //para usar el metodo Json con post delete put patch
 app.use(express.json());
 // http response 100, 200, 300 , 400
@@ -21,11 +21,11 @@ const options = {
 }
 app.use(cors())
 
-app.get('/', (req, res)=>{
+app.get('/api', (req, res)=>{
   res.send('Hola Mundo desde mi server de express :)')
 })
 
-app.get('/nueva-ruta', (req, res)=>{
+app.get('/api/nueva-ruta', (req, res)=>{
   res.send('Hola soy una nueva ruta :)')
 })
 
